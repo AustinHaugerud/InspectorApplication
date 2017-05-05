@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="inspector">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/inspector.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

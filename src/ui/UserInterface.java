@@ -49,6 +49,7 @@ public class UserInterface extends JFrame {
     private JLabel IdentifiersValue;
     private JLabel DependenciesValue;
     private JLabel imageLabel;
+    private JTextArea textArea3;
 
     private final JLabel resultsLabels[] = {Classes, Procedures, LocalVariables, Comments, Dependencies };
     private final JLabel resultsValuesLabels[] =
@@ -154,6 +155,12 @@ public class UserInterface extends JFrame {
                 ProceduresValue.setText(Integer.toString(attribs.numSharedProcedures));
                 DependenciesValue.setText(Integer.toString(attribs.numSharedDependencies));
                 IdentifiersValue.setText(Integer.toString(attribs.numSharedLocalVariables));
+                StringBuilder sb = new StringBuilder();
+                for(String info : attribs.sourceInfo)
+                {
+                    sb.append(info);
+                }
+                textArea3.setText(sb.toString());
 
             } catch(final Exception excep)
             {
@@ -194,7 +201,7 @@ public class UserInterface extends JFrame {
 
         setVisible(true);
 
-        setMinimumSize(new Dimension(800,600));
+        setMinimumSize(new Dimension(1200,800));
     }
 
     private void createUIComponents() {

@@ -38,22 +38,20 @@ public class UserInterface extends JFrame {
     /**
      * Results Labels
      */
-    private JLabel Classes;
     private JLabel Procedures;
     private JLabel LocalVariables;
     private JLabel Comments;
     private JLabel Dependencies;
 
-    private JLabel ClassesValue;
     private JLabel ProceduresValue;
     private JLabel IdentifiersValue;
     private JLabel DependenciesValue;
     private JLabel imageLabel;
     private JTextArea textArea3;
 
-    private final JLabel resultsLabels[] = {Classes, Procedures, LocalVariables, Comments, Dependencies };
+    private final JLabel resultsLabels[] = { Procedures, LocalVariables, Comments, Dependencies };
     private final JLabel resultsValuesLabels[] =
-            {ClassesValue, ProceduresValue, IdentifiersValue, DependenciesValue};
+            { ProceduresValue, IdentifiersValue, DependenciesValue};
 
     private class Source
     {
@@ -151,14 +149,15 @@ public class UserInterface extends JFrame {
 
                 ResultAttributes attribs = inspector.inspectSource(struct1, struct2);
 
-                ClassesValue.setText(Integer.toString(attribs.numSharedClasses));
                 ProceduresValue.setText(Integer.toString(attribs.numSharedProcedures));
                 DependenciesValue.setText(Integer.toString(attribs.numSharedDependencies));
                 IdentifiersValue.setText(Integer.toString(attribs.numSharedLocalVariables));
                 StringBuilder sb = new StringBuilder();
                 for(String info : attribs.sourceInfo)
                 {
+                    System.out.println("Added " + attribs.sourceInfo);
                     sb.append(info);
+                    sb.append(System.lineSeparator());
                 }
                 textArea3.setText(sb.toString());
 
@@ -183,6 +182,8 @@ public class UserInterface extends JFrame {
         setupSelectButton(selectButton1, textArea2);
 
         setupDummyActionCompareButton(compareButton);
+
+        textArea3.setEditable(false);
 
         try {
             BufferedImage logoImageDisplay = ImageIO.read(new File("logo.png"));
